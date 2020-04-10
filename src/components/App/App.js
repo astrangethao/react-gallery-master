@@ -27,6 +27,7 @@ class App extends Component {
     })
       .then((responseDB) => {
         console.log(responseDB.data);
+
         this.setState(
           {
             galleryItems: [...responseDB.data],
@@ -44,7 +45,7 @@ class App extends Component {
   putLikes(id) {
     axios({
       method: "PUT",
-      url: `/like/${id}`,
+      url: `/gallery/like/${id}`,
       data: "",
     })
       .then((responseDB) => {
@@ -59,7 +60,7 @@ class App extends Component {
   handleLikes(event) {
     const imageId = event.target.id;
     console.log(imageId);
-    this.putLikes(imageId);
+    // this.putLikes(imageId);
   }
 
   render() {

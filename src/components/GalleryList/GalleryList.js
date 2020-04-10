@@ -8,10 +8,7 @@ class GalleryList extends Component {
           <div key={index}>
             <img src={gallery.path} />
             <br />
-            <h2>{gallery.title}</h2>
-            <p>
-              <em>{gallery.description}</em>
-            </p>
+
             <button onClick={this.props.handleLikes} id={gallery.id}>
               Love It!
             </button>
