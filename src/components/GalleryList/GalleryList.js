@@ -4,7 +4,7 @@ class GalleryList extends Component {
   render() {
     return (
       <div className="container">
-        {this.props.galleryList.map((gallery, index) => (
+        {this.props.galleryItems.map((gallery, index) => (
           <div key={index}>
             <img src={gallery.path} />
             <br />

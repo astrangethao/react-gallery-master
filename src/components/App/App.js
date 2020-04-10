@@ -5,7 +5,7 @@ import GalleryList from "../GalleryList/GalleryList";
 
 class App extends Component {
   state = {
-    galleryList: [],
+    galleryItems: [],
     galleryItem: {
       id: "",
       title: "",
@@ -17,10 +17,10 @@ class App extends Component {
 
   componentDidMount() {
     console.log("Component App did Mount");
-    this.getList();
+    this.getItems();
   }
 
-  getList() {
+  getItems() {
     axios({
       method: "GET",
       url: "/gallery",
@@ -29,22 +29,37 @@ class App extends Component {
         console.log(responseDB.data);
         this.setState(
           {
-            galleryList: [...responseDB.data],
+            galleryItems: [...responseDB.data],
           },
           () => {
-            console.log("New List:", this.state.galleryList);
+            console.log("New List:", this.state.galleryItems);
           }
         );
       })
       .catch((error) => {
-        console.warn(`There was an error getting List`, error);
+        console.warn(`There was an error getting Items`, error);
+      });
+  }
+
+  putLikes(id) {
+    axios({
+      method: "PUT",
+      url: `/like/${id}`,
+      data: "",
+    })
+      .then((responseDB) => {
+        console.log(responseDB.data);
+        this.getItems();
+      })
+      .catch((error) => {
+        console.warn(`There was an error updating likes`, error);
       });
   }
 
   handleLikes(event) {
     const imageId = event.target.id;
-
     console.log(imageId);
+    this.putLikes(imageId);
   }
 
   render() {
@@ -55,7 +70,7 @@ class App extends Component {
         </header>
         <br />
         <GalleryList
-          galleryList={this.state.galleryList}
+          galleryItems={this.state.galleryItems}
           handleLikes={this.handleLikes}
         />
       </div>
