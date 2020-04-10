@@ -41,7 +41,20 @@ class App extends Component {
         </header>
         <br />
         <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg" />
+        {/* <img src="images/goat_small.jpg" /> */}
+        <div className="container">
+          {this.state.galleryList.map((gallery, index) => (
+            <div key={index}>
+              <img src={gallery.path} />
+              <button>Love It!</button>
+              <h2>{gallery.title}</h2>
+              <p>
+                <em>{gallery.description}</em>
+              </p>
+              <p>{gallery.likes} people love this!</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

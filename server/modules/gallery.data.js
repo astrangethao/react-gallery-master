@@ -12,7 +12,7 @@ const galleryItems = [
     title: "unicorn",
     description: "Unicorn Digital Painting by James Jean.",
     path: "images/unicorn.jpg",
-    likes: 1000,
+    likes: 0,
   },
 
   {
@@ -20,7 +20,7 @@ const galleryItems = [
     title: "Passage",
     description: "Passage Digital Painting by James Jean.",
     path: "images/passage.jpg",
-    likes: 10000,
+    likes: 0,
   },
 
   {
