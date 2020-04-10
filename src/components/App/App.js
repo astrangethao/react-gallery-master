@@ -33,6 +33,14 @@ class App extends Component {
       });
   }
 
+  handleLikes(event) {
+    const imageId = event.target.id;
+    console.log("clicked!", imageId);
+    // this.setState({
+    //   galleryList: [...this.state.galleryList],
+    // });
+  }
+
   render() {
     return (
       <div className="App">
@@ -40,17 +48,19 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br />
-        <p>Gallery goes here</p>
-        {/* <img src="images/goat_small.jpg" /> */}
+
         <div className="container">
           {this.state.galleryList.map((gallery, index) => (
             <div key={index}>
               <img src={gallery.path} />
-              <button>Love It!</button>
+              <br />
               <h2>{gallery.title}</h2>
               <p>
                 <em>{gallery.description}</em>
               </p>
+              <button onClick={this.handleLikes} id={gallery.id}>
+                Love It!
+              </button>
               <p>{gallery.likes} people love this!</p>
             </div>
           ))}
