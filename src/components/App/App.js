@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
+import GalleryList from "../GalleryList/GalleryList";
 
 class App extends Component {
   state = {
     galleryList: [],
+    galleryItem: {
+      id: "",
+      title: "",
+      description: "",
+      path: "",
+      likes: 0,
+    },
   };
 
   componentDidMount() {
@@ -35,10 +43,8 @@ class App extends Component {
 
   handleLikes(event) {
     const imageId = event.target.id;
-    console.log("clicked!", imageId);
-    // this.setState({
-    //   galleryList: [...this.state.galleryList],
-    // });
+
+    console.log(imageId);
   }
 
   render() {
@@ -48,23 +54,10 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br />
-
-        <div className="container">
-          {this.state.galleryList.map((gallery, index) => (
-            <div key={index}>
-              <img src={gallery.path} />
-              <br />
-              <h2>{gallery.title}</h2>
-              <p>
-                <em>{gallery.description}</em>
-              </p>
-              <button onClick={this.handleLikes} id={gallery.id}>
-                Love It!
-              </button>
-              <p>{gallery.likes} people love this!</p>
-            </div>
-          ))}
-        </div>
+        <GalleryList
+          galleryList={this.state.galleryList}
+          handleLikes={this.handleLikes}
+        />
       </div>
     );
   }
