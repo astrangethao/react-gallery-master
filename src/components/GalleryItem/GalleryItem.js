@@ -7,6 +7,7 @@ class GalleryItem extends Component {
       <img
         src={this.props.item.path}
         onClick={this.props.toggleImage(this.props.item.id)}
+        alt="galleryItem"
       />
     );
     const galleryDescription = (
@@ -29,7 +30,9 @@ class GalleryItem extends Component {
             className="heart"
             onClick={this.props.updateItem(this.props.item.id)}
           >
-            <span role="img">❤️</span>
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>
           </button>
         </div>
         {this.props.item.likes === 1 ? (

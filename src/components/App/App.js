@@ -26,9 +26,14 @@ class App extends Component {
       url: "/gallery",
     })
       .then((responseDB) => {
-        this.setState({
-          galleryItems: [...responseDB.data],
-        });
+        this.setState(
+          {
+            galleryItems: [...responseDB.data],
+          },
+          () => {
+            console.log(this.state.galleryItems);
+          }
+        );
       })
       .catch((error) => {
         console.warn(`There was an error getting Items`, error);
