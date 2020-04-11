@@ -48,6 +48,8 @@ class App extends Component {
       });
   };
 
+  //
+
   toggleImage = (id) => (event) => {
     console.log("clicked!", id);
     axios({
