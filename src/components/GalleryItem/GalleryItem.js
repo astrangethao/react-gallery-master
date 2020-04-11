@@ -4,9 +4,15 @@ class GalleryItem extends Component {
   render() {
     return (
       <div>
-        <h2>{gallery.title}</h2>
+        <img src={this.props.item.path} />
+        <br />
+        <button onClick={this.props.updateItem(this.props.item.id)}>
+          Love It!
+        </button>
+        <p>{this.props.item.likes} people love this!</p>
+        <h2>{this.props.item.title}</h2>
         <p>
-          <em>{gallery.description}</em>
+          <em>{this.props.item.description}</em>
         </p>
       </div>
     );

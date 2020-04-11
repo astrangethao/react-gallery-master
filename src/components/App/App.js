@@ -42,26 +42,19 @@ class App extends Component {
       });
   }
 
-  putLikes(id) {
+  updateItem = (id) => (event) => {
+    console.log("clicked", id);
     axios({
       method: "PUT",
       url: `/gallery/like/${id}`,
-      data: "",
     })
       .then((responseDB) => {
-        console.log(responseDB.data);
         this.getItems();
       })
       .catch((error) => {
         console.warn(`There was an error updating likes`, error);
       });
-  }
-
-  handleLikes(event) {
-    const imageId = event.target.id;
-    console.log(imageId);
-    // this.putLikes(imageId);
-  }
+  };
 
   render() {
     return (
@@ -72,7 +65,7 @@ class App extends Component {
         <br />
         <GalleryList
           galleryItems={this.state.galleryItems}
-          handleLikes={this.handleLikes}
+          updateItem={this.updateItem}
         />
       </div>
     );
