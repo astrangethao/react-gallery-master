@@ -23,16 +23,22 @@ class GalleryItem extends Component {
     return (
       <div>
         <br />
-        {this.props.item.isClicked ? galleryImage : galleryDescription}
+        {!this.props.item.isClicked ? galleryDescription : galleryImage}
         <div>
           <button
             className="heart"
             onClick={this.props.updateItem(this.props.item.id)}
           >
-            ❤️
+            <span role="img">❤️</span>
           </button>
         </div>
-        <p>{this.props.item.likes} people love this!</p>
+        {this.props.item.likes === 1 ? (
+          <p>{this.props.item.likes} person love this!</p>
+        ) : this.props.item.likes > 1 ? (
+          <p>{this.props.item.likes} people love this!</p>
+        ) : (
+          <p>Be the first one to love this!</p>
+        )}
       </div>
     );
   }
