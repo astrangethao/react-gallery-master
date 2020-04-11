@@ -23,7 +23,7 @@ class GalleryItem extends Component {
     return (
       <div>
         <br />
-        {!this.props.item.isClicked ? galleryDescription : galleryImage}
+        {!this.props.item.isClicked ? galleryImage : galleryDescription}
         <div>
           <button
             className="heart"
