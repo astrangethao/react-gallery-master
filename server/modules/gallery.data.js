@@ -2,7 +2,7 @@ const galleryItems = [
   {
     id: 1,
     title: "Clever Ruse",
-    description: "Photo of a goat taken at Glacier National Park.",
+    description: "Some cool artwork.",
     path: "images/clever_ruse.jpg",
     likes: 0,
     isClicked: false,
