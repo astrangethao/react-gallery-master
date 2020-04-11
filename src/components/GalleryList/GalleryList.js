@@ -9,6 +9,7 @@ class GalleryList extends Component {
           key={index}
           item={item}
           updateItem={this.props.updateItem}
+          toggleImage={this.props.toggleImage}
         />
       );
     });

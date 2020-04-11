@@ -26,16 +26,9 @@ class App extends Component {
       url: "/gallery",
     })
       .then((responseDB) => {
-        console.log(responseDB.data);
-
-        this.setState(
-          {
-            galleryItems: [...responseDB.data],
-          },
-          () => {
-            console.log("New List:", this.state.galleryItems);
-          }
-        );
+        this.setState({
+          galleryItems: [...responseDB.data],
+        });
       })
       .catch((error) => {
         console.warn(`There was an error getting Items`, error);
@@ -43,10 +36,23 @@ class App extends Component {
   }
 
   updateItem = (id) => (event) => {
-    console.log("clicked", id);
     axios({
       method: "PUT",
       url: `/gallery/like/${id}`,
+    })
+      .then((responseDB) => {
+        this.getItems();
+      })
+      .catch((error) => {
+        console.warn(`There was an error updating likes`, error);
+      });
+  };
+
+  toggleImage = (id) => (event) => {
+    console.log("clicked!", id);
+    axios({
+      method: "PUT",
+      url: `/gallery/clicked/${id}`,
     })
       .then((responseDB) => {
         this.getItems();
@@ -66,6 +72,7 @@ class App extends Component {
         <GalleryList
           galleryItems={this.state.galleryItems}
           updateItem={this.updateItem}
+          toggleImage={this.toggleImage}
         />
       </div>
     );
