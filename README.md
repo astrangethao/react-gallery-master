@@ -8,8 +8,6 @@ The cards hold a photo that can be clicked to reveal a description. Like buttons
 
 Built in React and styled with Bootstrap and CSS. Node server running Express with GET and POST routes.
 
-Installation
-
 ### Installation
 
 npm install
@@ -18,4 +16,4 @@ npm run client
 
 ### License 
 
-https://choosealicense.com/licenses/mit/
+[MIT](https://choosealicense.com/licenses/mit/)
